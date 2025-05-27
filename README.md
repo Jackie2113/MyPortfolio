@@ -2,6 +2,11 @@
 
 Hey there! So, this is basically my little slice of the internet, a super chill portfolio website where I'm gonna be showing off my design adventures.
 
+### See It Live! ✨
+
+You can actually check out the live version of my portfolio right now! Click here:
+**[https://jackie2113.github.io/MyPortfolio/](https://jackie2113.github.io/MyPortfolio/)**
+
 ### What's the Vibe?
 
 I'm really into that clean, minimalist, black and white look, you know? Less is more, right? So, that's what I was going for here – super simple, super clear, and hopefully, super cool. It's built with good ol' HTML, CSS, and a dash of JavaScript to make things move.
@@ -17,10 +22,6 @@ I'm really into that clean, minimalist, black and white look, you know? Less is 
 ### So, What's Next?
 
 Right now, it's pretty much a landing page because, well, it's still **UNDER CONSTRUCTION**! But stick around, I'm gonna be filling it up with all my design projects, experiments in Blender, Unreal Engine, Unity – basically, all the cool stuff I'm cooking up.
-
-### See how it looks
-
-[My Portfolio](jjp2k3-portfolio.netlify.app)
 
 ### Wanna Say Hi?
 
@@ -44,3 +45,5 @@ If you're curious and want to check out the code locally, you totally can! Just 
     ```
 3.  **Open `index.html` in your browser:**
     That's it! Just find the `index.html` file in the `MyPortfolio` folder you just cloned and open it up with your favorite web browser. No fancy setup needed!
+
+Thanks for stopping by! More coming soon!
