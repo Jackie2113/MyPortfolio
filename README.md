@@ -18,6 +18,10 @@ I'm really into that clean, minimalist, black and white look, you know? Less is 
 
 Right now, it's pretty much a landing page because, well, it's still **UNDER CONSTRUCTION**! But stick around, I'm gonna be filling it up with all my design projects, experiments in Blender, Unreal Engine, Unity – basically, all the cool stuff I'm cooking up.
 
+### See how it looks
+
+[My Portfolio](jjp2k3-portfolio.netlify.app)
+
 ### Wanna Say Hi?
 
 Hit me up!
