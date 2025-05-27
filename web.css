@@ -1,0 +1,687 @@
+/* General Reset & Base Styles */
+body {
+    margin: 0;
+    font-family: 'Monda', sans-serif;
+    background-color: #000; /* Strictly black */
+    color: #fff; /* Strictly white */
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* Custom Scrollbar Styles for WebKit Browsers (Chrome, Safari, Edge, Opera) */
+::-webkit-scrollbar {
+    width: 8px; /* Adjust width as desired, e.g., 6px or 8px */
+}
+
+/* Track (the background area of the scrollbar) */
+::-webkit-scrollbar-track {
+    background: #000; /* Strictly black track */
+    border-radius: 4px; /* Matches the thumb's rounded corners */
+}
+
+/* Handle (the draggable part of the scrollbar) */
+::-webkit-scrollbar-thumb {
+    background: #1a1a1a; /* A very dark grey, slightly lighter than pure black */
+    border-radius: 4px; /* Rounded corners for the thumb */
+    transition: background 0.3s ease; /* Smooth transition on hover */
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #333333; /* Slightly lighter on hover for interactivity */
+}
+
+/* Custom Scrollbar Styles for Firefox */
+/* Note: Firefox styling is less granular than WebKit */
+html {
+    scrollbar-width: thin; /* 'auto' | 'thin' | 'none' */
+    scrollbar-color: #1a1a1a #000; /* thumb color | track color */
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    padding: 1rem 5%;
+    background-color: #000; /* Strictly black */
+    align-items: center;
+    box-shadow: none; /* No shadow on header */
+    border-bottom: none; /* No dividing line */
+}
+
+/* Logo Image Container */
+.logo-container {
+    height: 30px; /* Lowered logo size */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.site-logo {
+    max-height: 100%; /* Make sure logo fits */
+    width: auto; /* Maintain aspect ratio */
+    /* Assuming logo_placeholder.png is WHITE. Dark mode: invert(0) to keep it white. */
+    filter: invert(0); 
+    transition: filter 0.3s;
+}
+
+.toggle-dark {
+    cursor: pointer;
+    font-size: 0.9rem;
+    color: #fff; /* Strictly white */
+    user-select: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s;
+}
+
+#theme-icon {
+    width: 24px;
+    height: 24px;
+    /* ASSUMING moon-and-stars-14.png is a WHITE icon. So, invert(0) keeps it white. */
+    filter: invert(0);
+    transition: filter 0.3s;
+}
+
+#theme-text {
+    font-size: 0.9rem;
+    color: #fff; /* Strictly white */
+}
+
+main {
+    flex-grow: 1;
+    padding: 1rem 2rem; /* Bring content up by reducing top padding */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    max-width: 1200px;
+    margin: 0 auto;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+/* Intro Section */
+.intro {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 4rem 0;
+    gap: 4rem;
+    flex-wrap: wrap;
+    text-align: center;
+}
+
+.intro-text {
+    max-width: 550px;
+    text-align: left;
+}
+
+.intro-text h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+    color: #fff; /* Strictly white */
+    font-weight: 700;
+}
+
+.intro-text p {
+    font-size: 1.1rem;
+    line-height: 1.7;
+    color: #fff; /* Strictly white */
+    font-weight: 400;
+}
+
+/* Avatar Animation Container - Increased Size */
+.avatar-animation-container {
+    width: 300px; /* Increased width */
+    height: 300px; /* Increased height to match paragraph vertical extremes */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    cursor: pointer; /* Initially interactable */
+}
+
+/* Base styling for all avatar states (frames and text) */
+.avatar-state, .avatar-text-state {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    top: 0;
+    left: 0;
+    box-sizing: border-box;
+}
+
+.avatar-state.active, .avatar-text-state.active {
+    opacity: 1;
+}
+
+/* Specific styling for the INITIAL tech avatar frame - Scaled Up */
+.initial-avatar-frame {
+    width: 280px; /* Scaled up */
+    height: 280px; /* Scaled up */
+    position: relative;
+    border: 2px solid #fff; /* Strictly white border */
+    clip-path: polygon(
+        20% 0%, 80% 0%, 100% 20%, 100% 80%, 80% 100%, 20% 100%, 0% 80%, 0% 20%
+    );
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1); /* Transparent white */
+}
+
+/* Pseudo-elements for the inner lines/details of the initial frame */
+.initial-avatar-frame::before,
+.initial-avatar-frame::after {
+    content: '';
+    position: absolute;
+    background-color: #fff; /* Strictly white lines */
+    transition: background-color 0.3s;
+}
+
+.initial-avatar-frame::before {
+    width: 40px; /* Scaled up */
+    height: 2px;
+    top: 20px; /* Adjusted position */
+    left: 20px; /* Adjusted position */
+    transform: rotate(-45deg);
+    transform-origin: top left;
+}
+.initial-avatar-frame::after {
+    width: 40px; /* Scaled up */
+    height: 2px;
+    bottom: 20px; /* Adjusted position */
+    right: 20px; /* Adjusted position */
+    transform: rotate(135deg);
+    transform-origin: bottom right;
+}
+
+/* Styling for the inline SVG person outline in initial frame */
+.person-outline {
+    width: 70%;
+    height: 70%;
+    color: #000; /* Black outline in dark mode */
+    stroke: currentColor;
+    stroke-width: 1.5;
+    transition: color 0.3s;
+}
+
+/* Specific styling for the FINAL square avatar frame - Scaled Up */
+.final-avatar-frame {
+    width: 280px; /* Scaled up */
+    height: 280px; /* Scaled up */
+    border: 2px solid #fff; /* Strictly white border for the square frame */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(255, 255, 255, 0.1); /* Transparent white */
+}
+
+/* Styling for profile image in final state - UNROUNDED Corners */
+.profile-image {
+    width: 100%; /* Fit within the frame */
+    height: 100%; /* Fit within the frame */
+    object-fit: cover; /* Cover the area, crop if necessary */
+    border-radius: 0; /* No rounded corners */
+    border: none; /* No border on the image itself */
+    display: block; /* For margin auto centering */
+    margin: auto; /* Center the image within its container */
+}
+
+/* Styling for text states */
+.avatar-text-state p {
+    font-size: 1.5rem; /* Slightly larger text */
+    color: #fff; /* Strictly white for loading text */
+    text-align: center;
+    font-weight: 400;
+    margin: 0;
+    animation: pulse 1.5s infinite ease-in-out;
+}
+
+@keyframes pulse {
+    0% { transform: scale(1); opacity: 0.8; }
+    50% { transform: scale(1.05); opacity: 1; }
+    100% { transform: scale(1); opacity: 0.8; }
+}
+
+
+/* Buttons Section */
+.buttons-container {
+    display: flex;
+    flex-wrap: wrap; /* Allow wrapping */
+    justify-content: center;
+    gap: 4rem; /* Increased gap between buttons */
+    padding: 2rem 0;
+    width: 100%;
+}
+
+.main-button {
+    background: transparent;
+    border: 1px solid #fff; /* Strictly white border */
+    color: #fff; /* Strictly white */
+    padding: 0.8rem 2.5rem; /* Wider padding */
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    font-size: 1rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    min-width: 250px; /* Wider buttons */
+    border-radius: 5px;
+    position: relative;
+    overflow: hidden;
+
+    display: flex;
+    align-items: flex-end; /* Dock text to bottom */
+    justify-content: flex-start; /* Dock text to left */
+}
+
+/* Wrap text in a span for underline animation */
+.main-button .button-text {
+    position: relative;
+    padding-bottom: 5px; /* Space for underline */
+    line-height: 1;
+    display: inline-block;
+}
+
+/* Underline animation for button text */
+.main-button .button-text::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 0; /* Starts hidden */
+    height: 2px;
+    background-color: #000; /* Strictly black underline on hover in dark mode */
+    transition: width 0.3s ease-out;
+}
+
+.main-button:hover {
+    background-color: #fff; /* Strictly white background on hover */
+    color: #000; /* Strictly black text on hover */
+    border-color: #fff; /* Strictly white */
+}
+
+.main-button:hover .button-text::after {
+    width: 100%; /* Expands to full width on hover */
+}
+
+
+/* Connect Group - Now horizontally aligned, no button styling */
+.connect-group {
+    display: flex; /* Changed to flex to align text and icons horizontally */
+    align-items: center; /* Vertically align items in the center */
+    gap: 1.5rem; /* Space between text and social icons */
+    padding: 0.8rem 2.5rem; /* Match other button padding for vertical alignment */
+    /* Remove button-like styling */
+    background: transparent;
+    border: none;
+    color: #fff; /* Inherit color from body */
+    cursor: default; /* Not interactable */
+    min-width: 250px; /* Maintain width for layout consistency */
+    box-sizing: border-box;
+    font-size: 1rem; /* Match button font size */
+    font-weight: 700; /* Match button font weight */
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
+.connect-text { /* New class for the "CONNECT WITH ME" text */
+    /* This is just text, no button properties */
+    color: inherit; /* Inherit from connect-group */
+    user-select: none; /* Prevent text selection */
+    white-space: nowrap; /* Prevent text wrapping */
+}
+
+.social-icons-row {
+    display: flex;
+    gap: 1.2rem;
+    padding-top: 0;
+}
+
+.social-icons-row img {
+    width: 28px;
+    height: 28px;
+    /* User confirms original social media icons are WHITE. So, invert(0) keeps them white in dark mode. */
+    filter: invert(0); 
+    transition: filter 0.3s, transform 0.3s;
+}
+
+.social-icons-row a:hover img {
+    /* Enlargement effect, no color glow */
+    transform: scale(1.1);
+    /* Ensure filter is still invert(0) for white icons in dark mode */
+    filter: invert(0);
+}
+
+
+/* Footer Section - Helldivers 2 style "Error" banner */
+footer {
+    background-color: #000; /* Strictly black */
+    text-align: center;
+    padding: 2.5rem 0; /* Adjust padding as needed */
+    margin-top: 4rem;
+    position: relative;
+    overflow: hidden; 
+    box-shadow: none; /* No shadow */
+    display: flex; /* Use flexbox to center the banner */
+    justify-content: center;
+    align-items: center;
+}
+
+.construction-banner {
+    position: relative;
+    display: flex; /* Use flex to align tape and text */
+    align-items: center;
+    justify-content: center;
+    width: 80%; /* Adjust width as needed */
+    max-width: 800px; /* Increased max-width for wider appearance */
+    height: 50px; /* Height of the banner */
+    background-color: #000; /* Black background for the banner */
+    border: 2px solid #fff; /* White border for the banner */
+    color: #fff; /* White text */
+    letter-spacing: 1px;
+    font-weight: 700;
+    font-size: 1rem;
+    overflow: hidden; /* Hide overflowing tape pattern */
+    box-sizing: border-box; /* Include padding/border in width/height */
+}
+
+.tape-pattern {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Seamless diagonal tape pattern - adjusted stripe widths and background-size */
+    background-image: repeating-linear-gradient(
+        -45deg,
+        #fff 0px,    /* White stripe start */
+        #fff 40px,   /* White stripe end */
+        #000 40px,   /* Black stripe start */
+        #000 80px    /* Black stripe end */
+    );
+    background-size: 80px 100%; /* Width of one full pattern cycle, 100% height */
+    opacity: 0.2; /* Subtle opacity for the tape effect */
+    z-index: 1; /* Behind the text */
+}
+
+.construction-banner span {
+    position: relative;
+    z-index: 2; /* Ensure text is above the tape pattern */
+    padding: 0 1rem; /* Padding for text inside banner */
+}
+
+
+/* Light Mode Styles */
+body.light-mode {
+    background-color: #fff; /* Strictly white */
+    color: #000; /* Strictly black */
+}
+
+/* Light Mode Scrollbar */
+body.light-mode ::-webkit-scrollbar-track {
+    background: #fff; /* Strictly white track in light mode */
+}
+
+body.light-mode ::-webkit-scrollbar-thumb {
+    background: #e0e0e0; /* A very light grey, slightly darker than pure white */
+}
+
+body.light-mode ::-webkit-scrollbar-thumb:hover {
+    background: #cccccc; /* Slightly darker on hover in light mode */
+}
+
+/* Firefox Specific: For light mode */
+body.light-mode {
+    scrollbar-color: #e0e0e0 #fff; /* Apply light mode colors to Firefox scrollbar */
+}
+
+body.light-mode header,
+body.light-mode footer {
+    background-color: #fff; /* Strictly white */
+    color: #000; /* Strictly black */
+    box-shadow: none; /* No shadow in light mode */
+    border-bottom: none; /* No dividing line in light mode */
+}
+
+body.light-mode .site-logo {
+    /* Assuming logo_placeholder.png is WHITE. Light mode: invert(1) to make it black. */
+    filter: invert(1); 
+}
+
+body.light-mode .toggle-dark {
+    color: #000; /* Strictly black */
+}
+
+body.light-mode #theme-icon {
+    /* ASSUMING moon-and-stars-14.png is a WHITE icon. So, invert(1) turns it black. */
+    filter: invert(1);
+}
+
+body.light-mode #theme-text {
+    color: #000; /* Strictly black */
+}
+
+body.light-mode .logo,
+body.light-mode .intro-text h1,
+body.light-mode .avatar-text-state p {
+    color: #000; /* Strictly black */
+}
+
+body.light-mode .intro-text p {
+    color: #000; /* Strictly black */
+}
+
+body.light-mode .initial-avatar-frame {
+    border-color: #000; /* Strictly black border */
+    background-color: rgba(0, 0, 0, 0.1); /* Transparent black */
+}
+
+body.light-mode .initial-avatar-frame::before,
+body.light-mode .initial-avatar-frame::after {
+    background-color: #000; /* Strictly black lines */
+}
+
+body.light-mode .person-outline {
+    color: #fff; /* White outline in light mode (to contrast with black background) */
+}
+
+body.light-mode .final-avatar-frame {
+    border-color: #000; /* Strictly black border for square frame */
+    background-color: rgba(0, 0, 0, 0.1); /* Transparent black */
+}
+
+body.light-mode .profile-image {
+    border-color: #000; /* Strictly black border for profile image */
+}
+
+body.light-mode .main-button {
+    border-color: #000; /* Strictly black */
+    color: #000; /* Strictly black */
+}
+
+body.light-mode .main-button:hover {
+    background-color: #000; /* Strictly black background on hover */
+    color: #fff; /* Strictly white text on hover */
+    border-color: #000; /* Strictly black */
+}
+
+/* Underline animation for buttons in light mode */
+body.light-mode .main-button .button-text::after {
+    background-color: #fff; /* Strictly white underline in light mode hover */
+}
+
+/* Light mode for Connect Group and its elements */
+body.light-mode .connect-group {
+    border: none; /* No border for the group */
+    color: #000; /* Black text */
+}
+
+body.light-mode .connect-text {
+    color: inherit; /* Inherit color from connect-group */
+}
+
+body.light-mode .social-icons-row img {
+    /* User confirms original social media icons are WHITE. So, invert(1) turns them black in light mode. */
+    filter: invert(1); 
+}
+
+body.light-mode .social-icons-row a:hover img {
+    /* Enlargement effect, no color glow */
+    transform: scale(1.1);
+    filter: invert(1); /* Ensure filter is still invert(1) for black icons in light mode */
+}
+
+body.light-mode .construction-banner {
+    background-color: #fff; /* White background for the banner */
+    border-color: #000; /* Black border for the banner */
+    color: #000; /* Black text */
+}
+
+body.light-mode .construction-banner .tape-pattern {
+    background-image: repeating-linear-gradient(
+        -45deg,
+        #000 0px,    /* Black stripe */
+        #000 40px,
+        #fff 40px,   /* White stripe */
+        #fff 80px
+    );
+}
+
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .intro {
+        flex-direction: column;
+        text-align: center;
+        gap: 2rem;
+        padding: 2rem 0;
+    }
+
+    .intro-text {
+        text-align: center;
+    }
+
+    .intro-text h1 {
+        font-size: 2rem;
+    }
+
+    .intro-text p {
+        font-size: 0.95rem;
+    }
+
+    /* Avatar size adjustment for smaller screens */
+    .avatar-animation-container {
+        width: 250px;
+        height: 250px;
+    }
+
+    .initial-avatar-frame,
+    .final-avatar-frame {
+        width: 230px;
+        height: 230px;
+    }
+
+    .avatar-text-state p {
+        font-size: 1.3rem;
+    }
+
+    .buttons-container {
+        flex-direction: column; /* Stack buttons vertically on small screens */
+        gap: 1.5rem; /* Adjusted for smaller screens */
+    }
+
+    .main-button {
+        width: 80%; /* Occupy more width */
+        max-width: 300px;
+        padding: 0.8rem 1.5rem; /* Adjust padding for smaller width */
+        min-width: 180px; /* Revert to a smaller min-width for mobile */
+    }
+
+    /* Connect section on small screens */
+    .connect-group { /* Target the new grouping div */
+        width: 80%;
+        max-width: 300px;
+        padding: 0; /* Remove padding from group, buttons handle it */
+        border: none; /* Remove border from group */
+        flex-direction: column; /* Stack button and icons vertically */
+        gap: 0.8rem; /* Space between button and icons */
+    }
+    .connect-text { /* Now a span, not a button */
+        text-align: center;
+        margin-bottom: 0.5rem; /* Add space between text and icons */
+    }
+}
+
+@media (max-width: 480px) {
+    header {
+        padding: 1rem 1rem;
+    }
+
+    .logo-container {
+        height: 30px;
+    }
+
+    .toggle-dark {
+        font-size: 0.8rem;
+    }
+
+    .intro {
+        padding: 1rem 0;
+    }
+
+    .avatar-animation-container {
+        width: 200px;
+        height: 200px;
+    }
+
+    .initial-avatar-frame,
+    .final-avatar-frame { 
+        width: 180px;
+        height: 180px;
+    }
+
+    .avatar-text-state p {
+        font-size: 1rem;
+    }
+
+    .intro-text h1 {
+        font-size: 1.8rem;
+    }
+
+    .intro-text p {
+        font-size: 0.9rem;
+    }
+
+    .main-button {
+        padding: 0.7rem 1.2rem;
+        font-size: 0.9rem;
+    }
+
+    .social-icons-row img {
+        width: 24px;
+        height: 24px;
+    }
+
+    .connect-text { /* Now a span, not a button */
+        font-size: 0.85rem;
+    }
+
+    footer {
+        padding: 1.5rem 0;
+    }
+
+    .construction-banner {
+        height: 40px; /* Slightly smaller on mobile */
+        font-size: 0.85rem;
+    }
+}

@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jacob | Designer Portfolio</title>
+  <link rel="stylesheet" href="web.css">
+  <link href="https://fonts.googleapis.com/css2?family=Monda:wght@400;700&display=swap" rel="stylesheet">
+  <script defer src="web.js"></script>
+</head>
+<body>
+  <header>
+    <div class="logo-container">
+      <img src="images/logo_placeholder.png" alt="Jacob's Logo" class="site-logo">
+    </div>
+    <div class="toggle-dark" onclick="toggleDarkMode()">
+      <img id="theme-icon" src="images/moon-and-stars-14.png" alt="Dark Mode Icon"> 
+      <span id="theme-text">Dark Mode</span>
+    </div>
+  </header>
+
+  <main>
+    <section class="intro">
+      <div class="avatar-animation-container" onclick="startAvatarAnimation()">
+        <div class="avatar-state initial-avatar-frame active" data-state="initial">
+          <svg class="person-outline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5.52 19c.64-2.2 1.84-3.98 3.36-5.06A8 8 0 0 1 12 11a8 8 0 0 1 3.12.94c1.52 1.08 2.72 2.86 3.36 5.06M12 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path>
+          </svg>
+        </div>
+
+        <div class="avatar-text-state" data-state="text1">
+          <p>// sudo load_avatar -u Jacob</p>
+        </div>
+        <div class="avatar-text-state" data-state="text2">
+          <p>// Initializing pixels...</p>
+        </div>
+        <div class="avatar-text-state" data-state="text3">
+          <p>// Locating profile image...</p>
+        </div>
+        <div class="avatar-text-state" data-state="text4">
+          <p>// Data chunk 1/3... OK</p>
+        </div>
+        <div class="avatar-text-state" data-state="text5">
+          <p>// Data chunk 2/3... OK</p>
+        </div>
+        <div class="avatar-text-state" data-state="text6">
+          <p>// Data chunk 3/3... OK</p>
+        </div>
+        <div class="avatar-text-state" data-state="text7">
+          <p>// Avatar loaded &#9829;</p> </div>
+
+        <div class="avatar-state final-avatar-frame" data-state="final">
+          <img src="images/profile.jpg" alt="Profile Picture" class="profile-image">
+        </div>
+      </div>
+      <div class="intro-text">
+        <h1>Hi, I'm Jacob.</h1>
+        <p>I'm a design enthusiast who enjoys clean, minimalist graphics. I focus on simplicity and clarity in my work, always trying to express more with less. I mostly work in Blender, and have some experience with Unreal Engine and Unity for 3D projects.</p>
+      </div>
+    </section>
+
+    <section class="buttons-container">
+      <button class="main-button" onclick="navigate('journey')"><span class="button-text">MY JOURNEY</span></button>
+      <button class="main-button" onclick="navigate('works')"><span class="button-text">WORKS</span></button>
+      <button class="main-button" onclick="navigate('experience')"><span class="button-text">EXPERIENCE</span></button>
+      
+      <div class="connect-group">
+        <span class="connect-text">CONNECT WITH ME</span>
+        <div class="social-icons-row">
+          <a href="https://www.facebook.com/jacob.j.panicker/" target="_blank"><img id="facebook-icon" src="images/facebook-41.png" alt="Facebook"></a>
+          <a href="https://www.instagram.com/jacob.j.panicker/" target="_blank"><img id="instagram-icon" src="images/instagram-43.png" alt="Instagram"></a>
+          <a href="mailto:jjp200321@gmail.com"><img id="gmail-icon" src="images/gmail-logo-45.png" alt="Email"></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="construction-banner">
+      <div class="tape-pattern"></div>
+      <span>WEBSITE UNDER CONSTRUCTION</span>
+    </div>
+  </footer>
+</body>
+</html>
