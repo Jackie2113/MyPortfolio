@@ -28,9 +28,15 @@ Hit me up!
 
 ### Wanna Peek Under the Hood?
 
-If you're curious, you can totally grab the code from this repo. Just clone it, open `index.html` in your browser, and you're good to go. No fancy setup needed!
+If you're curious and want to check out the code locally, you totally can! Just follow these super simple steps:
 
-```bash
-git clone [https://github.com/YOUR-GITHUB-USERNAME/YOUR-REPOSITORY-NAME.git](https://github.com/YOUR-GITHUB-USERNAME/YOUR-REPOSITORY-NAME.git)
-cd YOUR-REPOSITORY-NAME
-# Then just open index.html in your browser!
+1.  **Clone my repository:**
+    ```bash
+    git clone [https://github.com/Jackie2113/MyPortfolio.git](https://github.com/Jackie2113/MyPortfolio.git)
+    ```
+2.  **Navigate into the project folder:**
+    ```bash
+    cd MyPortfolio
+    ```
+3.  **Open `index.html` in your browser:**
+    That's it! Just find the `index.html` file in the `MyPortfolio` folder you just cloned and open it up with your favorite web browser. No fancy setup needed!
