@@ -299,7 +299,7 @@ main {
     bottom: 0;
     left: 0;
     width: 0; /* Starts hidden */
-    height: 1px;
+    height: 1.5px;
     background-color: #000; /* Strictly black underline on hover in dark mode */
     transition: width 0.3s ease-out;
 }
