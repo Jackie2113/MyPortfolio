@@ -52,7 +52,7 @@ header {
 
 /* Logo Image Container */
 .logo-container {
-    height: 30px; /* Lowered logo size */
+    height: 30px; /* Reverted logo size */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -275,7 +275,7 @@ main {
     letter-spacing: 1px;
     text-transform: uppercase;
     min-width: 250px; /* Wider buttons */
-    border-radius: 5px;
+    border-radius: 5px; /* Reverted to original rounded corners */
     position: relative;
     overflow: hidden;
 
@@ -385,9 +385,9 @@ footer {
     width: 80%; /* Adjust width as needed */
     max-width: 800px; /* Increased max-width for wider appearance */
     height: 50px; /* Height of the banner */
-    background-color: #000; /* Black background for the banner */
-    border: 2px solid #fff; /* White border for the banner */
-    color: #fff; /* White text */
+    background-color: #FFD700; /* Yellow background for the banner */
+    border: 2px solid #000; /* Black border for the banner */
+    color: #000; /* Black text */
     letter-spacing: 1px;
     font-weight: 700;
     font-size: 1rem;
@@ -404,10 +404,10 @@ footer {
     /* Seamless diagonal tape pattern - adjusted stripe widths and background-size */
     background-image: repeating-linear-gradient(
         -45deg,
-        #fff 0px,    /* White stripe start */
-        #fff 40px,   /* White stripe end */
-        #000 40px,   /* Black stripe start */
-        #000 80px    /* Black stripe end */
+        #000 0px,    /* Black stripe start */
+        #000 40px,   /* Black stripe end */
+        transparent 40px,   /* Transparent stripe start */
+        transparent 80px    /* Transparent stripe end */
     );
     background-size: 80px 100%; /* Width of one full pattern cycle, 100% height */
     opacity: 0.2; /* Subtle opacity for the tape effect */
@@ -542,21 +542,62 @@ body.light-mode .social-icons-row a:hover img {
 }
 
 body.light-mode .construction-banner {
-    background-color: #fff; /* White background for the banner */
-    border-color: #000; /* Black border for the banner */
+    background-color: #FFEB3B; /* Lighter yellow for light mode */
+    border-color: #000; /* Black border in light mode */
     color: #000; /* Black text */
 }
 
 body.light-mode .construction-banner .tape-pattern {
     background-image: repeating-linear-gradient(
         -45deg,
-        #000 0px,    /* Black stripe */
-        #000 40px,
-        #fff 40px,   /* White stripe */
-        #fff 80px
+        #fff 0px,    /* White stripe */
+        #fff 40px,
+        transparent 40px,   /* Transparent stripe */
+        transparent 80px
     );
 }
 
+
+/* New rule for work-in-progress sections */
+.work-in-progress-section {
+    flex-grow: 1; /* Make it take available space */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    padding: 2rem; /* Add some padding */
+    width: 100%;
+}
+
+.wip-text {
+    font-size: 8rem; /* Extremely big font */
+    font-weight: 700; /* Bold font for impact */
+    color: #fff; /* White in dark mode */
+    margin: 0; /* Remove default paragraph margin */
+    white-space: nowrap; /* Prevent text wrapping */
+    overflow: hidden; /* Hide overflowing text if it's too wide */
+    text-overflow: ellipsis; /* Add ellipsis for overflowing text */
+    transition: color 0.3s;
+}
+
+/* Light mode styling for WIP text */
+body.light-mode .wip-text {
+    color: #000; /* Black in light mode */
+}
+
+/* Media queries for responsiveness of the WIP text */
+@media (max-width: 768px) {
+    .wip-text {
+        font-size: 5rem; /* Adjust for tablets */
+    }
+}
+
+@media (max-width: 480px) {
+    .wip-text {
+        font-size: 3rem; /* Adjust for mobile */
+        white-space: normal; /* Allow text wrapping on small screens */
+    }
+}
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
