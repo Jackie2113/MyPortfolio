@@ -26,33 +26,22 @@
       <div class="avatar-animation-container" onclick="startAvatarAnimation()">
         <div class="avatar-state initial-avatar-frame active" data-state="initial">
           <svg class="person-outline" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M5.52 19c.64-2.2 1.84-3.98 3.36-5.06A8 8 0 0 1 12 11a8 8 0 0 1 3.12.94c1.52 1.08 2.72 2.86 3.36 5.06M12 2a4 4 0 1 0 0 8 4 4 0 0 0 0-8z"></path>
+            <path d="M12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2Z" />
+            <path d="M12 15C13.6569 15 15 13.6569 15 12C15 10.3431 13.6569 9 12 9C10.3431 9 9 10.3431 9 12C9 13.6569 10.3431 15 12 15Z" />
+            <path d="M12 6V9" />
+            <path d="M12 15V18" />
+            <path d="M6 12H9" />
+            <path d="M15 12H18" />
           </svg>
         </div>
-
-        <div class="avatar-text-state" data-state="text1">
-          <p>// sudo load_avatar -u Jacob</p>
-        </div>
-        <div class="avatar-text-state" data-state="text2">
-          <p>// Initializing pixels...</p>
-        </div>
-        <div class="avatar-text-state" data-state="text3">
-          <p>// Locating profile image...</p>
-        </div>
-        <div class="avatar-text-state" data-state="text4">
-          <p>// Data chunk 1/3... OK</p>
-        </div>
-        <div class="avatar-text-state" data-state="text5">
-          <p>// Data chunk 2/3... OK</p>
-        </div>
-        <div class="avatar-text-state" data-state="text6">
-          <p>// Data chunk 3/3... OK</p>
-        </div>
-        <div class="avatar-text-state" data-state="text7">
-          <p>// Avatar loaded &#9829;</p> </div>
-
         <div class="avatar-state final-avatar-frame" data-state="final">
-          <img src="images/profile.jpg" alt="Profile Picture" class="profile-image">
+            <img class="profile-image" src="images/image_cd3db5.jpg" alt="Jacob Panicker Profile">
+        </div>
+        <div class="avatar-text-state" data-state="loading">
+          <p>LOADING...</p>
+        </div>
+        <div class="avatar-text-state" data-state="error">
+          <p>ERROR</p>
         </div>
       </div>
       <div class="intro-text">
@@ -75,12 +64,17 @@
         </div>
       </div>
     </section>
+
+    <section class="work-in-progress-section">
+        <p class="wip-text">WORK IN PROGRESS</p>
+    </section>
+
   </main>
 
   <footer>
     <div class="construction-banner">
-      <div class="tape-pattern"></div>
-      <span>WEBSITE UNDER CONSTRUCTION</span>
+        <div class="tape-pattern"></div>
+        <span>WEBSITE UNDER CONSTRUCTION</span>
     </div>
   </footer>
 </body>

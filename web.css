@@ -52,7 +52,7 @@ header {
 
 /* Logo Image Container */
 .logo-container {
-    height: 40px; /* Logo size */
+    height: 30px; /* Logo size */
     display: flex;
     align-items: center;
     justify-content: center;
