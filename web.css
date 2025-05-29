@@ -52,7 +52,7 @@ header {
 
 /* Logo Image Container */
 .logo-container {
-    height: 30px; /* Reverted logo size */
+    height: 30px; /* Lowered logo size */
     display: flex;
     align-items: center;
     justify-content: center;
@@ -152,15 +152,15 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
-    opacity: 0; /* Hidden by default */
-    /* Transition is controlled by JS for fine-tuned instant vs fade effects */
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
     top: 0;
     left: 0;
     box-sizing: border-box;
 }
 
 .avatar-state.active, .avatar-text-state.active {
-    opacity: 1; /* Visible when active */
+    opacity: 1;
 }
 
 /* Specific styling for the INITIAL tech avatar frame - Scaled Up */
@@ -258,7 +258,7 @@ main {
     display: flex;
     flex-wrap: wrap; /* Allow wrapping */
     justify-content: center;
-    gap: 4.5rem; /* Increased gap between buttons */
+    gap: 4rem; /* Increased gap between buttons */
     padding: 2rem 0;
     width: 100%;
 }
@@ -271,11 +271,11 @@ main {
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
     font-size: 1rem;
-    font-weight: 650; /* Font weight updated to 650 */
+    font-weight: 700;
     letter-spacing: 1px;
     text-transform: uppercase;
     min-width: 250px; /* Wider buttons */
-    border-radius: 0px; /* Reverted to original corners */
+    border-radius: 5px;
     position: relative;
     overflow: hidden;
 
@@ -299,7 +299,7 @@ main {
     bottom: 0;
     left: 0;
     width: 0; /* Starts hidden */
-    height: 1.5px; /* Underline height updated to 1.5px */
+    height: 2px;
     background-color: #000; /* Strictly black underline on hover in dark mode */
     transition: width 0.3s ease-out;
 }
@@ -367,32 +367,37 @@ main {
 footer {
     background-color: #000; /* Strictly black */
     text-align: center;
-    padding: 2.5rem 0; /* Adjust padding as needed */
-    margin-top: 4rem;
+    padding: 0; /* Remove padding from footer itself */
+    margin-top: 0; /* No top margin, let flex handle spacing */
     position: relative;
     overflow: hidden; 
     box-shadow: none; /* No shadow */
     display: flex; /* Use flexbox to center the banner */
     justify-content: center;
-    align-items: center;
+    align-items: flex-end; /* Align banner to the bottom of the footer */
+    flex-grow: 1; /* Allow footer to take available space */
+    padding-bottom: 40px; /* Add padding at the bottom for taskbar space */
 }
 
 .construction-banner {
-    position: relative;
-    display: flex; /* Use flex to align tape and text */
-    align-items: center;
-    justify-content: center;
-    width: 100%; /* Banner spans full width */
-    height: 50px; /* Height of the banner */
-    background-color: #FFD700; /* Yellow background for the banner */
-    border-top: 2px solid #000; /* Black border for the banner */
-    border-bottom: 2px solid #000; /* Black border for the banner */
-    color: #000; /* Black text */
-    letter-spacing: 1px;
-    font-weight: 700;
-    font-size: 1rem;
-    overflow: hidden; /* Hide overflowing tape pattern */
-    box-sizing: border-box; /* Include padding/border in width/height */
+    position: absolute; /* Position absolutely to stick to the bottom */
+    bottom: 0; /* Stick to the very bottom */
+    left: 0;
+    width: 100%; /* Banner spans full width*/
+    max-width: none; /* Remove max-width constraint*/
+    height: 50px; /* Height of the banner*/
+    background-color: #FFD700; /* Yellow background for the banner*/
+    border-top: 2px solid #000; /* Black border for the banner*/
+    border-bottom: 2px solid #000; /* Black border for the banner*/
+    color: #000; /* Black text*/
+    letter-spacing: 1px; /**/
+    font-weight: 700; /**/
+    font-size: 1rem; /**/
+    overflow: hidden; /* Hide overflowing tape pattern*/
+    box-sizing: border-box; /* Include padding/border in width/height*/
+    display: flex; /**/
+    align-items: center; /**/
+    justify-content: center; /**/
 }
 
 .tape-pattern {
@@ -719,7 +724,7 @@ body.light-mode .wip-text {
     }
 
     footer {
-        padding: 1.5rem 0;
+        padding-bottom: 30px; /* Adjust for mobile taskbar height if needed */
     }
 
     .construction-banner {
