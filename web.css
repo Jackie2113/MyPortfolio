@@ -55,7 +55,6 @@ header {
     height: 40px; /* Logo size */
     display: flex;
     align-items: center;
-    justify-content: center;
 }
 
 .site-logo {
