@@ -271,7 +271,7 @@ main {
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 500;
     letter-spacing: 1px;
     text-transform: uppercase;
     min-width: 250px; /* Wider buttons */
@@ -299,7 +299,7 @@ main {
     bottom: 0;
     left: 0;
     width: 0; /* Starts hidden */
-    height: 2px;
+    height: 1px;
     background-color: #000; /* Strictly black underline on hover in dark mode */
     transition: width 0.3s ease-out;
 }
