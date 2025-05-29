@@ -47,7 +47,23 @@ function toggleDarkMode() {
 }
 
 function navigate(section) {
-    alert(`Navigation to ${section.toUpperCase()} section is under construction.`);
+    let targetPage = '';
+    switch (section) {
+        case 'journey':
+            targetPage = 'journey.html';
+            break;
+        case 'works':
+            targetPage = 'works.html';
+            break;
+        case 'experience':
+            targetPage = 'experience.html';
+            break;
+        default:
+            targetPage = 'index.html'; // Fallback to index if something goes wrong
+    }
+    if (targetPage) {
+        window.location.href = targetPage; // Redirects the browser to the new page
+    }
 }
 
 function startAvatarAnimation() {
@@ -89,14 +105,14 @@ function startAvatarAnimation() {
         { stateIndex: 5, duration: 300, transition: 'instant' }, // "// Data chunk 2/3... OK"
         { stateIndex: 6, duration: 300, transition: 'instant' }, // "// Data chunk 3/3... OK"
         { stateIndex: 7, duration: 500, transition: 'instant' }, // "// Avatar loaded ♥"
-        { stateIndex: 8, duration: 800, transition: 'fade' }   // Final avatar state (profile.jpg)
+        { stateIndex: 8, duration: 800, transition: 'fade' }    // Final avatar state (profile.jpg)
     ];
 
     function runSequence(i) {
         if (i >= sequence.length) {
             animationInProgress = false; // Animation finished
             // After animation, ensure pointer events are disabled on the container for the final state
-            avatarContainer.style.pointerEvents = 'none'; 
+            avatarContainer.style.pointerEvents = 'none';
             return;
         }
 
