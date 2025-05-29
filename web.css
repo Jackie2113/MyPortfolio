@@ -275,7 +275,7 @@ main {
     letter-spacing: 1px;
     text-transform: uppercase;
     min-width: 250px; /* Wider buttons */
-    border-radius: 5px;
+    border-radius: 0;
     position: relative;
     overflow: hidden;
 
