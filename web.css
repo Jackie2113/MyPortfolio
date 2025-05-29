@@ -258,7 +258,7 @@ main {
     display: flex;
     flex-wrap: wrap; /* Allow wrapping */
     justify-content: center;
-    gap: 4rem; /* Increased gap between buttons */
+    gap: 4.5rem; /* Increased gap between buttons */
     padding: 2rem 0;
     width: 100%;
 }
@@ -275,7 +275,7 @@ main {
     letter-spacing: 1px;
     text-transform: uppercase;
     min-width: 250px; /* Wider buttons */
-    border-radius: 5px; /* Reverted to original rounded corners */
+    border-radius: 0px; /* Reverted to original corners */
     position: relative;
     overflow: hidden;
 
