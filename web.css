@@ -382,11 +382,11 @@ footer {
     display: flex; /* Use flex to align tape and text */
     align-items: center;
     justify-content: center;
-    width: 80%; /* Adjust width as needed */
-    max-width: 800px; /* Increased max-width for wider appearance */
+    width: 100%; /* Banner spans full width */
     height: 50px; /* Height of the banner */
     background-color: #FFD700; /* Yellow background for the banner */
-    border: 2px solid #000; /* Black border for the banner */
+    border-top: 2px solid #000; /* Black border for the banner */
+    border-bottom: 2px solid #000; /* Black border for the banner */
     color: #000; /* Black text */
     letter-spacing: 1px;
     font-weight: 700;
@@ -543,7 +543,8 @@ body.light-mode .social-icons-row a:hover img {
 
 body.light-mode .construction-banner {
     background-color: #FFEB3B; /* Lighter yellow for light mode */
-    border-color: #000; /* Black border in light mode */
+    border-top-color: #000; /* Black border in light mode */
+    border-bottom-color: #000; /* Black border in light mode */
     color: #000; /* Black text */
 }
 
