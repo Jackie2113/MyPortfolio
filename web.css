@@ -258,7 +258,7 @@ main {
     display: flex;
     flex-wrap: wrap; /* Allow wrapping */
     justify-content: center;
-    gap: 4rem; /* Increased gap between buttons */
+    gap: 4.5rem; /* Increased gap between buttons */
     padding: 2rem 0;
     width: 100%;
 }
@@ -271,11 +271,11 @@ main {
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
     font-size: 1rem;
-    font-weight: 700;
+    font-weight: 650;
     letter-spacing: 1px;
     text-transform: uppercase;
     min-width: 250px; /* Wider buttons */
-    border-radius: 5px;
+    border-radius: 0px;
     position: relative;
     overflow: hidden;
 
@@ -299,7 +299,7 @@ main {
     bottom: 0;
     left: 0;
     width: 0; /* Starts hidden */
-    height: 2px;
+    height: 1.5px;
     background-color: #000; /* Strictly black underline on hover in dark mode */
     transition: width 0.3s ease-out;
 }
@@ -362,69 +362,67 @@ main {
     filter: invert(0);
 }
 
-
-/* Footer Section - Helldivers 2 style "Error" banner */
+/* Footer Styles */
 footer {
-    background-color: #000; /* Strictly black */
-    text-align: center;
-    padding: 0; /* Remove padding from footer itself */
-    margin-top: 0; /* No top margin, let flex handle spacing */
-    position: relative;
-    overflow: hidden; 
-    box-shadow: none; /* No shadow */
-    display: flex; /* Use flexbox to center the banner */
+    width: 100%;
+    display: flex;
     justify-content: center;
-    align-items: flex-end; /* Align banner to the bottom of the footer */
-    flex-grow: 1; /* Allow footer to take available space */
-    padding-bottom: 40px; /* Add padding at the bottom for taskbar space */
+    align-items: center;
+    padding: 0; /* Remove default padding */
+    margin-top: auto; /* Push footer to the bottom */
 }
 
 .construction-banner {
-    position: absolute; /* Position absolutely to stick to the bottom */
-    bottom: 0; /* Stick to the very bottom */
-    left: 0;
-    width: 100%; /* Banner spans full width*/
-    max-width: none; /* Remove max-width constraint*/
-    height: 50px; /* Height of the banner*/
-    background-color: #FFD700; /* Yellow background for the banner*/
-    border-top: 2px solid #000; /* Black border for the banner*/
-    border-bottom: 2px solid #000; /* Black border for the banner*/
-    color: #000; /* Black text*/
-    letter-spacing: 1px; /**/
-    font-weight: 700; /**/
-    font-size: 1rem; /**/
-    overflow: hidden; /* Hide overflowing tape pattern*/
-    box-sizing: border-box; /* Include padding/border in width/height*/
-    display: flex; /**/
-    align-items: center; /**/
-    justify-content: center; /**/
+    width: 100%;
+    position: relative;
+    overflow: hidden; /* Hide overflowing tape pattern */
+    background-color: #ff0000; /* Bright red for error */
+    color: #fff;
+    text-align: center;
+    padding: 1rem 0;
+    font-size: 1.2rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.5);
+    z-index: 1; /* Ensure it's above other content if necessary */
+    border-top: 2px solid #fff; /* White border for emphasis */
+    border-bottom: 2px solid #fff; /* White border for emphasis */
+    transition: background-color 0.3s, color 0.3s, border-color 0.3s;
 }
 
-.tape-pattern {
+.construction-banner .tape-pattern {
     position: absolute;
     top: 0;
     left: 0;
     width: 100%;
     height: 100%;
-    /* Seamless diagonal tape pattern - adjusted stripe widths and background-size */
     background-image: repeating-linear-gradient(
-        -45deg,
-        #000 0px,    /* Black stripe start */
-        #000 40px,   /* Black stripe end */
-        transparent 40px,   /* Transparent stripe start */
-        transparent 80px    /* Transparent stripe end */
+        45deg,
+        rgba(0,0,0,0.2) 0px,
+        rgba(0,0,0,0.2) 10px,
+        transparent 10px,
+        transparent 20px
     );
-    background-size: 80px 100%; /* Width of one full pattern cycle, 100% height */
-    opacity: 0.2; /* Subtle opacity for the tape effect */
-    z-index: 1; /* Behind the text */
+    opacity: 0.5; /* Semi-transparent pattern */
+    z-index: -1; /* Behind text */
+    transition: background-image 0.3s;
 }
 
-.construction-banner span {
-    position: relative;
-    z-index: 2; /* Ensure text is above the tape pattern */
-    padding: 0 1rem; /* Padding for text inside banner */
+body.light-mode .construction-banner {
+    background-color: #cc0000; /* Slightly darker red for light mode */
+    color: #fff;
+    border-color: #000; /* Black border in light mode */
 }
 
+body.light-mode .construction-banner .tape-pattern {
+    background-image: repeating-linear-gradient(
+        45deg,
+        rgba(255,255,255,0.2) 0px,
+        rgba(255,255,255,0.2) 10px,
+        transparent 10px,
+        transparent 20px
+    );
+}
 
 /* Light Mode Styles */
 body.light-mode {
