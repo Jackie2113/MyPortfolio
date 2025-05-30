@@ -609,12 +609,48 @@ body.light-mode .wip-text {
 }
 
 /* Media Queries for Responsiveness */
+/* Full updated CSS including portrait responsiveness */
+
+/* General Reset & Base Styles */
+body {
+    margin: 0;
+    font-family: 'Monda', sans-serif;
+    background-color: #000;
+    color: #fff;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+/* ... (existing styles remain unchanged above this line) ... */
+
+/* Media Queries for Responsiveness */
 @media (max-width: 768px) {
+    body {
+        display: flex;
+        flex-direction: column;
+        min-height: 100vh;
+    }
+
+    main {
+        flex-grow: 1;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        padding: 1rem;
+        box-sizing: border-box;
+        width: 100%;
+    }
+
     .intro {
         flex-direction: column;
         text-align: center;
         gap: 2rem;
         padding: 2rem 0;
+        align-items: center;
+        justify-content: center;
     }
 
     .intro-text {
@@ -629,7 +665,6 @@ body.light-mode .wip-text {
         font-size: 0.95rem;
     }
 
-    /* Avatar size adjustment for smaller screens */
     .avatar-animation-container {
         width: 250px;
         height: 250px;
@@ -646,29 +681,76 @@ body.light-mode .wip-text {
     }
 
     .buttons-container {
-        flex-direction: column; /* Stack buttons vertically on small screens */
-        gap: 1.5rem; /* Adjusted for smaller screens */
+        flex-direction: column;
+        gap: 1.5rem;
+        align-items: center;
     }
 
     .main-button {
-        width: 80%; /* Occupy more width */
-        max-width: 300px;
-        padding: 0.8rem 1.5rem; /* Adjust padding for smaller width */
-        min-width: 180px; /* Revert to a smaller min-width for mobile */
-    }
-
-    /* Connect section on small screens */
-    .connect-group { /* Target the new grouping div */
         width: 80%;
         max-width: 300px;
-        padding: 0; /* Remove padding from group, buttons handle it */
-        border: none; /* Remove border from group */
-        flex-direction: column; /* Stack button and icons vertically */
-        gap: 0.8rem; /* Space between button and icons */
+        padding: 0.8rem 1.5rem;
+        min-width: 180px;
+        align-self: center;
     }
-    .connect-text { /* Now a span, not a button */
+
+    .connect-group {
+        width: 80%;
+        max-width: 300px;
+        padding: 0;
+        border: none;
+        flex-direction: column;
+        gap: 0.8rem;
+        align-items: center;
+        justify-content: center;
         text-align: center;
-        margin-bottom: 0.5rem; /* Add space between text and icons */
+    }
+
+    .connect-text {
+        text-align: center;
+        margin-bottom: 0.5rem;
+    }
+
+    .social-icons-row {
+        justify-content: center;
+    }
+
+    footer {
+        margin-top: auto;
+        width: 100%;
+        padding: 0;
+    }
+
+    .construction-banner {
+        width: 100%;
+        height: 60px;
+        font-size: 1rem;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        position: relative;
+        text-transform: uppercase;
+        font-weight: 700;
+        background-color: #ff0000;
+        border-top: 2px solid #fff;
+        border-bottom: 2px solid #fff;
+    }
+
+    .construction-banner .tape-pattern {
+        position: absolute;
+        top: 0;
+        left: 0;
+        height: 100%;
+        width: 100%;
+        background-image: repeating-linear-gradient(
+            45deg,
+            rgba(0, 0, 0, 0.2) 0px,
+            rgba(0, 0, 0, 0.2) 10px,
+            transparent 10px,
+            transparent 20px
+        );
+        opacity: 0.5;
+        z-index: -1;
     }
 }
 
@@ -685,17 +767,13 @@ body.light-mode .wip-text {
         font-size: 0.8rem;
     }
 
-    .intro {
-        padding: 1rem 0;
-    }
-
     .avatar-animation-container {
         width: 200px;
         height: 200px;
     }
 
     .initial-avatar-frame,
-    .final-avatar-frame { 
+    .final-avatar-frame {
         width: 180px;
         height: 180px;
     }
@@ -722,16 +800,12 @@ body.light-mode .wip-text {
         height: 24px;
     }
 
-    .connect-text { /* Now a span, not a button */
+    .connect-text {
         font-size: 0.85rem;
-    }
-
-    footer {
-        padding-bottom: 30px; /* Adjust for mobile taskbar height if needed */
     }
 
     .construction-banner {
-        height: 40px; /* Slightly smaller on mobile */
-        font-size: 0.85rem;
+        height: 60px;
+        font-size: 1rem;
     }
 }
