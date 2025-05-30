@@ -52,9 +52,15 @@ header {
 
 /* Logo Image Container */
 .logo-container {
-    height: 40px; /* Logo size */
+    height: 32px; /* Slightly larger than theme icon */
     display: flex;
     align-items: center;
+}
+
+.logo-container a {
+    display: inline-flex;
+    align-items: center;
+    height: 100%;
 }
 
 .site-logo {
