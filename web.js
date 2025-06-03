@@ -155,3 +155,116 @@ function startAvatarAnimation() {
         runSequence(0);
     }, 500);
 }
+
+const years = [
+  {
+    year: 2003,
+    title: "The Beginning",
+    text: "Born into a world full of ideas and potential. Even as a child, I was curious and eager to understand how things work."
+  },
+  {
+    year: 2019,
+    title: "Milestone Moment",
+    text: "Completed 10th grade. I began to seriously explore my interests in science and art, laying the groundwork for creative expression."
+  },
+  {
+    year: 2021,
+    title: "A Step Closer",
+    text: "Graduated 12th. My passion for design, electronics, and visual media became clearer, guiding me into engineering."
+  },
+  {
+    year: 2025,
+    title: "Coming of Age",
+    text: "Graduation from IIT Tirupati (expected). A moment that marks the start of a bigger journey beyond academics, toward identity and impact."
+  }
+];
+
+let currentYearIndex = -1;
+
+window.addEventListener("DOMContentLoaded", () => {
+  // Timeline starts only after BEGIN is clicked
+});
+
+function startJourney() {
+  document.getElementById("journeyIntro").style.display = "none";
+  const wrapper = document.getElementById("timelineWrapper");
+  wrapper.classList.remove("hidden");
+
+  setTimeout(() => {
+    document.getElementById("timelineLine").classList.add("visible");
+  }, 300);
+
+  injectTimeline();
+  showYearDetail(0);
+}
+
+function injectTimeline() {
+  const line = document.getElementById("timelineLine");
+  line.innerHTML = "";
+
+  const baseYear = years[0].year;
+  const yearOffsets = years.map(y => y.year - baseYear);
+  const maxOffset = yearOffsets[yearOffsets.length - 1] + 5;
+
+  years.forEach((entry, idx) => {
+    const gapPercent = (yearOffsets[idx] / maxOffset) * 100;
+
+    const dot = document.createElement("div");
+    dot.className = "timeline-dot";
+    dot.style.left = `calc(${gapPercent}% - 10px)`;
+    dot.style.pointerEvents = "auto";
+    dot.onclick = () => showYearDetail(idx);
+
+    setTimeout(() => {
+      dot.classList.add("show");
+    }, 500 + idx * 300);
+
+    const label = document.createElement("div");
+    label.className = "timeline-label";
+    label.textContent = entry.year;
+    label.style.left = `calc(${gapPercent}% - 20px)`;
+    label.style.top = idx % 2 === 0 ? "-2.5rem" : "1.5rem";
+
+    line.appendChild(dot);
+    line.appendChild(label);
+  });
+}
+
+function showYearDetail(index) {
+  if (index === currentYearIndex) return;
+  currentYearIndex = index;
+
+  const detail = document.getElementById("timelineDetail");
+  detail.classList.remove("visible");
+
+  setTimeout(() => {
+    const year = years[index];
+    detail.innerHTML = `
+      <h3>${year.year} — ${year.title}</h3>
+      <p>${year.text}</p>
+    `;
+    detail.classList.add("visible");
+  }, 300);
+
+  document.querySelectorAll(".timeline-dot").forEach(dot => dot.classList.remove("active"));
+  document.querySelectorAll(".timeline-dot")[index].classList.add("active");
+}
+
+function goToPrevYear() {
+  if (currentYearIndex > 0) {
+    showYearDetail(currentYearIndex - 1);
+  }
+}
+
+function goToNextYear() {
+  if (currentYearIndex < years.length - 1) {
+    showYearDetail(currentYearIndex + 1);
+  } else {
+    const detail = document.getElementById("timelineDetail");
+    detail.classList.remove("visible");
+    setTimeout(() => {
+      detail.innerHTML = "<h3>2030+</h3><p>More memories and milestones to come...</p>";
+      detail.classList.add("visible");
+    }, 300);
+  }
+}

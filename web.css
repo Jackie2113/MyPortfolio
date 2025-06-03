@@ -319,6 +319,302 @@ main {
     width: 100%; /* Expands to full width on hover */
 }
 
+.journey-main {
+  padding: 5rem 2rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.journey-title {
+  font-size: 3rem;
+  margin-bottom: 4rem;
+  text-align: center;
+  z-index: 1;
+}
+
+.journey-intro {
+  text-align: center;
+  padding: 4rem 1rem;
+  animation: fadeIn 1s ease;
+  z-index: 3;
+  position: relative;
+}
+
+.begin-button {
+  background: transparent;
+  border: 2px solid #fff;
+  color: #fff;
+  font-size: 1rem;
+  padding: 1rem 3rem;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  z-index: 2;
+}
+
+.begin-button:hover {
+  background: #fff;
+  color: #000;
+}
+
+.begin-button::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  width: 0%;
+  height: 2px;
+  background: #000;
+  transition: width 0.3s ease-out;
+}
+
+.begin-button:hover::after {
+  left: 0;
+  right: auto;
+  width: 100%;
+}
+
+.timeline-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 2rem;
+  width: 100%;
+  max-width: 1000px;
+  position: relative;
+  overflow: visible;
+  margin-bottom: 3rem;
+  z-index: 1;
+}
+
+.timeline-wrapper::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200%;
+  height: 800px;
+  background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 85%);
+  transform: translate(-50%, -50%);
+  z-index: 0;
+  pointer-events: none;
+}
+
+body:not(.light-mode) .timeline-wrapper::before {
+  background: radial-gradient(circle, rgba(255,255,255,0.08) 0%, transparent 75%);
+}
+
+.timeline-line {
+  position: relative;
+  width: 100%;
+  height: 3px;
+  background-color: #fff;
+  opacity: 0;
+  animation: fadeInLine 1.2s ease forwards;
+  overflow: visible;
+}
+
+@keyframes fadeInLine {
+  to {
+    opacity: 1;
+  }
+}
+
+.timeline-dot {
+  position: absolute;
+  top: -9px;
+  width: 20px;
+  height: 20px;
+  background: #fff;
+  border-radius: 50%;
+  z-index: 3;
+  pointer-events: auto;
+  opacity: 0;
+  animation: none;
+  transition: opacity 0.4s ease;
+}
+
+.timeline-dot.show {
+  animation: ping 1.5s ease-out infinite;
+  opacity: 1;
+  transition: opacity 0.4s ease;
+}
+
+.timeline-dot.active {
+  box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.5);
+  transform: scale(1.2);
+  animation: none;
+}
+
+.timeline-label {
+  position: absolute;
+  font-size: 0.95rem;
+  color: #fff;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.timeline-detail {
+  opacity: 0;
+  transform: translateY(10px);
+  transition: opacity 0.6s ease, transform 0.6s ease;
+  font-size: 1.1rem;
+  max-width: 700px;
+  text-align: justify;
+  min-height: 100px;
+  z-index: 1;
+}
+
+.timeline-detail.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.timeline-arrow {
+  font-size: 1.5rem;
+  color: #bbb;
+  font-style: italic;
+  user-select: none;
+  cursor: pointer;
+  transition: transform 0.3s ease, color 0.3s ease;
+  z-index: 3;
+}
+
+.timeline-arrow:hover {
+  transform: scale(1.3);
+  color: #fff;
+}
+
+.right-arrow {
+  color: #888;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.2);
+}
+
+.timeline-arrow.right-arrow:hover::after {
+  content: "The future is open...";
+  position: absolute;
+  top: 1.5rem;
+  right: 0;
+  font-size: 0.8rem;
+  color: #ccc;
+  opacity: 0.7;
+}
+
+.hidden {
+  display: none;
+}
+
+@keyframes ping {
+  0%   { transform: scale(1); opacity: 1; }
+  50%  { transform: scale(1.4); opacity: 0.5; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+/* Light mode overrides */
+body.light-mode .timeline-line {
+  background: #000;
+}
+body.light-mode .timeline-dot {
+  background: #000;
+}
+body.light-mode .timeline-label {
+  color: #000;
+}
+
+body.light-mode .timeline-arrow {
+  color: #222;
+}
+
+body.light-mode .timeline-arrow:hover {
+  color: #000;
+}
+
+body.light-mode .timeline-arrow.right-arrow:hover::after {
+  color: #555;
+}
+
+/* Mobile responsiveness */
+@media (max-width: 768px) {
+  .journey-main {
+    padding: 2rem 1rem;
+  }
+
+  .journey-intro h1 {
+    font-size: 2.5rem;
+  }
+
+  .begin-button {
+    padding: 0.8rem 2rem;
+    font-size: 0.95rem;
+    width: 100%;
+    max-width: 280px;
+  }
+
+  .timeline-container {
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .timeline-scroll {
+    width: 85vw;
+  }
+
+  .timeline-dot {
+    width: 16px;
+    height: 16px;
+    top: -8px;
+  }
+
+  .timeline-label {
+    font-size: 0.85rem;
+    transform: translateX(-25%);
+  }
+
+  .timeline-end-marker {
+    right: -2rem;
+    top: 1rem;
+    font-size: 0.75rem;
+    transform: translateX(10px);
+  }
+
+  .timeline-nav {
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+  }
+
+  .timeline-detail {
+    font-size: 1rem;
+    padding: 0 0.5rem;
+    text-align: center;
+  }
+}
+
+/* Desktop enhancement */
+@media (min-width: 1024px) {
+  body::before {
+    content: "";
+    position: absolute;
+    top: 0; left: 0;
+    width: 100%; height: 100%;
+    background: radial-gradient(circle at 50% 20%, rgba(255,255,255,0.05) 0%, transparent 60%);
+    z-index: -1;
+  }
+
+  .timeline-detail {
+    max-width: 900px;
+    font-size: 1.2rem;
+    line-height: 1.8;
+  }
+
+  .begin-button {
+    font-size: 1.1rem;
+    letter-spacing: 1px;
+  }
+}
 
 /* Connect Group - Now horizontally aligned, no button styling */
 .connect-group {
@@ -808,4 +1104,59 @@ body {
         height: 60px;
         font-size: 1rem;
     }
+}
+
+@media (max-width: 768px) {
+  .journey-main {
+    padding: 2rem 1rem;
+  }
+
+  .journey-title {
+    font-size: 2rem;
+    margin-bottom: 2rem;
+  }
+
+  .timeline-wrapper {
+    overflow-x: auto;
+    width: 100%;
+  }
+
+  .timeline-line {
+    min-width: 800px; /* Keeps timeline scrollable horizontally */
+    overflow: visible;
+  }
+
+  .timeline-dot {
+    pointer-events: auto;
+    z-index: 5;
+  }
+
+  .timeline-label {
+    font-size: 0.8rem;
+    top: -2rem;
+  }
+
+  .timeline-detail {
+    text-align: left;
+    font-size: 1rem;
+    padding: 1rem;
+    margin-top: 2rem;
+    border-left: 2px solid rgba(255,255,255,0.2);
+  }
+
+  .timeline-arrow {
+    display: none;
+  }
+
+  .background-glow {
+    width: 300px;
+    height: 300px;
+    top: 30%;
+  }
+
+  .floating-triangle {
+    border-left: 15px solid transparent;
+    border-right: 15px solid transparent;
+    border-bottom: 25px solid rgba(255,255,255,0.05);
+  }
 }

@@ -1,37 +1,48 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Jacob | My Journey</title>
-  <link rel="stylesheet" href="web.css">
-  <link href="https://fonts.googleapis.com/css2?family=Monda:wght@400;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="web.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Monda:wght@400;700&display=swap" rel="stylesheet" />
   <script defer src="web.js"></script>
 </head>
 <body>
   <header>
     <div class="logo-container">
       <a href="index.html">
-        <img src="images/logo_placeholder.png" alt="Jacob's Logo" class="site-logo">
+        <img src="images/logo_placeholder.png" alt="Jacob's Logo" class="site-logo" />
       </a>
     </div>
     <div class="toggle-dark" onclick="toggleDarkMode()">
-      <img id="theme-icon" src="images/moon-and-stars-14.png" alt="Dark Mode Icon">
+      <img id="theme-icon" src="images/moon-and-stars-14.png" alt="Dark Mode Icon" />
       <span id="theme-text">Dark Mode</span>
     </div>
   </header>
 
-  <main>
-    <section class="work-in-progress-section">
-      <p class="wip-text">WORK IN PROGRESS</p>
-    </section>
+  <main class="journey-main">
+    <div class="journey-intro" id="journeyIntro">
+      <h1 class="journey-title">MY JOURNEY</h1>
+      <p class="journey-subtitle">Snapshots from my creative evolution</p>
+      <button class="begin-button" onclick="startJourney()">BEGIN</button>
+    </div>
+
+    <div class="timeline-wrapper hidden" id="timelineWrapper">
+      <div class="timeline-arrow left-arrow" onclick="goToPrevYear()">←</div>
+        <div class="timeline-line" id="timelineLine"></div>
+      <div class="timeline-arrow right-arrow" onclick="goToNextYear()">→</div>
+    </div>
+
+    <div class="timeline-detail" id="timelineDetail"></div>
+
   </main>
 
-  <footer>
+  <!-- <footer>
     <div class="construction-banner">
       <div class="tape-pattern"></div>
       <span>WEBSITE UNDER CONSTRUCTION</span>
     </div>
-  </footer>
+  </footer> -->
 </body>
 </html>
