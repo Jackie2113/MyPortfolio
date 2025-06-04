@@ -183,6 +183,9 @@ let currentYearIndex = -1;
 
 window.addEventListener("DOMContentLoaded", () => {
   // Timeline starts only after BEGIN is clicked
+  if (window.innerWidth <= 768) {
+    buildMobileJourney();
+  }
 });
 
 function startJourney() {
@@ -267,4 +270,40 @@ function goToNextYear() {
       detail.classList.add("visible");
     }, 300);
   }
+}
+
+function buildMobileJourney() {
+  const list = document.getElementById("mobileYearList");
+
+  years.forEach((entry, idx) => {
+    const item = document.createElement("li");
+    item.textContent = `${entry.year}`;
+    item.onclick = () => showMobileDetail(idx, item);
+    list.appendChild(item);
+  });
+}
+
+function showMobileDetail(index, clickedItem) {
+  const allItems = document.querySelectorAll("#mobileYearList li");
+  allItems.forEach(li => {
+    li.classList.remove("active");
+    const next = li.nextElementSibling;
+    if (next && next.classList.contains("mobile-detail")) {
+      next.remove();
+    }
+  });
+
+  clickedItem.classList.add("active");
+
+  const detail = document.createElement("div");
+  detail.className = "mobile-detail";
+  detail.innerHTML = `
+    <strong>${years[index].title}</strong><br/>
+    ${years[index].text}
+  `;
+
+  clickedItem.insertAdjacentElement("afterend", detail);
+  setTimeout(() => {
+    detail.classList.add("visible");
+  }, 50);
 }
