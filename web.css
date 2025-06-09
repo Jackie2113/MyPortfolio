@@ -275,6 +275,7 @@ main {
     padding: 0.8rem 2.5rem; /* Wider padding */
     cursor: pointer;
     transition: background-color 0.3s, color 0.3s, border-color 0.3s;
+    font-family: 'Monda', sans-serif;
     font-size: 1rem;
     font-weight: 650;
     letter-spacing: 1px;
@@ -347,6 +348,7 @@ main {
   background: transparent;
   border: 2px solid #fff;
   color: #fff;
+  font-family: 'Monda', sans-serif;
   font-size: 1rem;
   padding: 1rem 3rem;
   cursor: pointer;
