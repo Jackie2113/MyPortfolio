@@ -365,3 +365,49 @@ function handleModalClick(e) {
     closeWorkModal();
   }
 }
+
+document.addEventListener("DOMContentLoaded", () => {
+  const audio = document.getElementById("bg-audio");
+  const visualToggle = document.getElementById("audio-visual-toggle");
+  const songName = document.getElementById("song-name");
+  const widget = document.querySelector(".audio-widget");
+  const progress = document.getElementById("audio-progress");
+
+  const songs = [
+    { file: "songs/song1.mp3", name: "Pink Blue - Tsumyoki x Bharg" },
+    { file: "songs/song2.mp3", name: "Every Tear is a Waterfall - Coldplay" },
+    { file: "songs/song3.mp3", name: "Little Bit More - Suriel Hess" }
+  ];
+
+  // Pick random song each time
+  const current = songs[Math.floor(Math.random() * songs.length)];
+  audio.src = current.file;
+  songName.textContent = current.name;
+
+  // Set ambient volume
+  audio.volume = 0.1;
+
+  // Try to autoplay
+  audio.play().catch(() => {
+    audio.muted = true;
+    widget.classList.add("audio-muted");
+    audio.play();
+  });
+
+  // Toggle mute/unmute
+  visualToggle.addEventListener("click", () => {
+    audio.muted = !audio.muted;
+    widget.classList.toggle("audio-muted", audio.muted);
+  });
+
+  // Seek on user input
+  progress.addEventListener("input", () => {
+  audio.currentTime = progress.value;
+  });
+
+  // Update progress bar while audio plays
+  audio.addEventListener("timeupdate", () => {
+  progress.max = audio.duration;
+  progress.value = audio.currentTime;
+  });
+});
