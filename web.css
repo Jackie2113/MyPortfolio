@@ -603,8 +603,8 @@ body.light-mode .timeline-arrow.right-arrow:hover::after {
 
 /* Song name */
 #song-name {
-  font-size: 0.85rem;
-  max-width: 150px;
+  font-size: 0.70rem;
+  max-width: 160px;
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
@@ -614,14 +614,6 @@ body.light-mode .timeline-arrow.right-arrow:hover::after {
   display: flex;
   flex-direction: column;
   gap: 0.3rem;
-}
-
-#song-name {
-  font-size: 0.85rem;
-  max-width: 160px;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
 
 #audio-progress {
