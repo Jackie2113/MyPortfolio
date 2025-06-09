@@ -380,6 +380,20 @@ main {
   width: 100%;
 }
 
+body.light-mode .begin-button {
+  border: 2px solid #000;
+  color: #000;
+}
+
+body.light-mode .begin-button:hover {
+  background: #000;
+  color: #fff;
+}
+
+body.light-mode .begin-button::after {
+  background: #000;
+}
+
 .timeline-wrapper {
   display: flex;
   align-items: center;
@@ -790,6 +804,45 @@ body.light-mode .construction-banner .tape-pattern {
     );
 }
 
+.tech-credit {
+  text-align: center;
+  font-size: 0.75rem;
+  color: #999;
+  padding: 2rem 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.tech-credit img {
+  height: 24px; /* ⬆️ increased from 16/18 to 24px */
+  width: auto;
+  opacity: 0.8;
+  transition: transform 0.2s ease, filter 0.2s ease;
+}
+
+.tech-credit img:hover {
+  transform: scale(1.1);
+  opacity: 1;
+}
+
+/* Invert white logos in light mode (html/js) */
+body.light-mode .invert-on-light {
+  filter: invert(1);
+}
+
+/* Invert black logos in dark mode (css) */
+body:not(.light-mode) .invert-on-dark {
+  filter: invert(1);
+}
+
+/* Light mode text color override */
+body.light-mode .tech-credit {
+  color: #444;
+}
+
 /* Light Mode Styles */
 body.light-mode {
     background-color: #fff; /* Strictly white */
@@ -968,23 +1021,6 @@ body.light-mode .wip-text {
         white-space: normal; /* Allow text wrapping on small screens */
     }
 }
-
-/* Media Queries for Responsiveness */
-/* Full updated CSS including portrait responsiveness */
-
-/* General Reset & Base Styles */
-body {
-    margin: 0;
-    font-family: 'Monda', sans-serif;
-    background-color: #000;
-    color: #fff;
-    min-height: 100vh;
-    display: flex;
-    flex-direction: column;
-    transition: background-color 0.3s, color 0.3s;
-}
-
-/* ... (existing styles remain unchanged above this line) ... */
 
 /* Media Queries for Responsiveness */
 @media (max-width: 768px) {
