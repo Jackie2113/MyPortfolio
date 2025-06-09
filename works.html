@@ -22,16 +22,104 @@
   </header>
 
   <main>
-    <section class="work-in-progress-section">
+    <!-- <section class="work-in-progress-section">
       <p class="wip-text">WORK IN PROGRESS</p>
-    </section>
+    </section> -->
+
+<section class="works-section">
+  <h1 class="section-title">Works</h1>
+  <div class="works-grid">
+
+    <div class="work-card" onclick="openWorkModal('images/placeholderimg.jpg', 'Tech Fest 2024 Poster', 'A cyberpunk-themed design for IIT Tirupati\'s annual festival.', null)">
+      <img src="images/placeholderimg.jpg" alt="Poster Design" />
+      <div class="work-info">
+        <h3>Tech Fest 2024 Poster</h3>
+        <p>A cyberpunk-themed design for IIT Tirupati's annual festival.</p>
+        <div class="tags"><span>Photoshop</span><span>Posters</span></div>
+      </div>
+    </div>
+
+    <div class="work-card" onclick="openWorkModal('images/placeholderimg.jpg', 'Spaceship Concept Art', 'High-poly Blender model used in Unreal for a sci-fi sim.', null)">
+      <img src="images/placeholderimg.jpg" alt="3D Blender Model" />
+      <div class="work-info">
+        <h3>Spaceship Concept Art</h3>
+        <p>High-poly Blender model used in Unreal for a sci-fi sim.</p>
+        <div class="tags"><span>Blender</span><span>Unreal</span></div>
+      </div>
+    </div>
+
+    <div class="work-card" onclick="openWorkModal('images/placeholderimg.jpg', 'RC Car Controller UI', 'Minimalist UI for the RC Car tech event control panel.', null)">
+      <img src="images/placeholderimg.jpg" alt="UI Mockup" />
+      <div class="work-info">
+        <h3>RC Car Controller UI</h3>
+        <p>Minimalist UI for the RC Car tech event control panel.</p>
+        <div class="tags"><span>Figma</span><span>UI/UX</span></div>
+      </div>
+    </div>
+
+    <div class="work-card" onclick="openWorkModal('images/placeholderimg.jpg', 'Cyber City Environment', 'Fully modular 3D environment in Blender with post-FX.', null)">
+      <img src="images/placeholderimg.jpg" alt="3D Scene" />
+      <div class="work-info">
+        <h3>Cyber City Environment</h3>
+        <p>Fully modular 3D environment in Blender with post-FX.</p>
+        <div class="tags"><span>Blender</span><span>World Building</span></div>
+      </div>
+    </div>
+
+    <div class="work-card" onclick="openWorkModal('images/placeholderimg.jpg', 'Fest T-Shirt 2023', 'Fusion of retro theme with cyber visuals for custom tees.', null)">
+      <img src="images/placeholderimg.jpg" alt="T-shirt Design" />
+      <div class="work-info">
+        <h3>Fest T-Shirt 2023</h3>
+        <p>Fusion of retro theme with cyber visuals for custom tees.</p>
+        <div class="tags"><span>Illustrator</span><span>Apparel</span></div>
+      </div>
+    </div>
+
+    <div class="work-card" onclick="openWorkModal('images/placeholderimg.jpg', 'Portfolio Website', 'Designed and developed from scratch — dark/light toggle and timeline.', 'https://github.com/Jackie2113/MyPortfolio')">
+      <img src="images/placeholderimg.jpg" alt="Web Portfolio" />
+      <div class="work-info">
+        <h3>Portfolio Website</h3>
+        <p>Designed and developed from scratch — dark/light toggle and timeline.</p>
+        <div class="tags"><span>HTML</span><span>CSS</span><span>JS</span></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
   </main>
 
+<div class="work-modal hidden" id="workModal">
+  <div class="work-modal-content">
+    <button class="work-modal-close" onclick="closeWorkModal()">← Back</button>
+    <div class="work-modal-image">
+      <img id="modalImage" src="" alt="Work Preview" />
+    </div>
+    <div class="work-modal-details">
+      <h2 id="modalTitle"></h2>
+      <p id="modalDescription"></p>
+      <a id="modalLink" class="work-link" href="#" target="_blank" rel="noopener noreferrer">
+        <img src="images/link.png" alt="Link Icon" class="link-icon" />
+        <span id="linkText">View Project</span>
+      </a>
+    </div>
+  </div>
+</div>
+
   <footer>
-    <div class="construction-banner">
+
+    <div class="tech-credit">
+      <span>Made with</span>
+      <img src="images/html5.png" alt="HTML5" class="invert-on-light" />
+      <img src="images/css3.png" alt="CSS3" class="invert-on-dark" />
+      <img src="images/js.png" alt="JavaScript" class="invert-on-light" />
+    </div>
+
+    <!-- <div class="construction-banner">
       <div class="tape-pattern"></div>
       <span>WEBSITE UNDER CONSTRUCTION</span>
-    </div>
+    </div> -->
+    
   </footer>
 </body>
 </html>

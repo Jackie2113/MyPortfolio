@@ -806,7 +806,7 @@ body.light-mode .construction-banner .tape-pattern {
 
 .tech-credit {
   text-align: center;
-  font-size: 0.75rem;
+  font-size: 1rem;
   color: #999;
   padding: 2rem 0;
   display: flex;
@@ -817,7 +817,7 @@ body.light-mode .construction-banner .tape-pattern {
 }
 
 .tech-credit img {
-  height: 24px; /* ⬆️ increased from 16/18 to 24px */
+  height: 40px;
   width: auto;
   opacity: 0.8;
   transition: transform 0.2s ease, filter 0.2s ease;
@@ -1001,6 +1001,301 @@ body.light-mode .construction-banner .tape-pattern {
     overflow: hidden; /* Hide overflowing text if it's too wide */
     text-overflow: ellipsis; /* Add ellipsis for overflowing text */
     transition: color 0.3s;
+}
+
+.works-section {
+  padding: 4rem 2rem 2rem 2rem; 
+  margin-top: -1rem;
+  text-align: center;
+}
+
+.section-title {
+  font-size: 3rem;
+  margin-bottom: 2rem;
+}
+
+.works-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 2rem;
+}
+
+.work-card {
+  background: rgba(255,255,255,0.03);
+  border-radius: 12px;
+  overflow: hidden;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
+}
+
+.work-card img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.work-info {
+  padding: 1rem;
+  text-align: left;
+}
+
+.work-info h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  color: #fff;
+}
+
+.work-info p {
+  font-size: 0.95rem;
+  color: #ccc;
+  margin-bottom: 0.5rem;
+}
+
+.tags span {
+  display: inline-block;
+  background: #444;
+  color: #fff;
+  font-size: 0.7rem;
+  padding: 0.3rem 0.6rem;
+  border-radius: 4px;
+  margin-right: 0.4rem;
+}
+
+.work-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Shadow for dark mode */
+body:not(.light-mode) .work-card:hover {
+  box-shadow: 0 6px 20px rgba(98, 98, 98, 0.65);
+}
+
+/* Shadow for light mode */
+body.light-mode .work-card:hover {
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+}
+
+/* Light mode overrides */
+body.light-mode .work-info h3 {
+  color: #111;
+}
+body.light-mode .work-info p {
+  color: #333;
+}
+body.light-mode .tags span {
+  background: #eee;
+  color: #111;
+}
+
+/* Modal Overlay */
+.work-modal {
+  position: fixed;
+  top: 0; left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: 2rem;
+  overflow-y: auto;
+  transition: opacity 0.4s ease;
+  opacity: 1;
+}
+
+.work-modal.hidden {
+  display: none;
+}
+
+.work-modal.fade-out .work-modal-content {
+  animation: fadeOutDown 0.4s ease forwards;
+}
+
+/* Modal Content Box */
+.work-modal-content {
+  background: #111;
+  max-width: 75vw;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 10px 30px rgba(255,255,255,0.15);
+  position: relative;
+  animation: fadeInUp 0.5s ease;
+}
+
+@keyframes fadeInUp {
+  from {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeOutDown {
+  from {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  to {
+    transform: translateY(20px);
+    opacity: 0;
+  }
+}
+
+/* Close/Back Button */
+.work-modal-close {
+  position: absolute;
+  top: 1rem;
+  left: 1rem;
+  font-family: 'Monda', sans-serif;
+  font-size: 1rem;
+  background: transparent;
+  color: #fff;
+  border: 1px solid #fff;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.work-modal-close:hover {
+  background: #fff;
+  color: #000;
+}
+
+.work-modal-image {
+  flex: 1 1 60%;
+  background: #000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.work-modal-image img {
+  max-width: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  display: block;
+}
+
+.work-modal-details {
+  flex: 1 1 40%;
+  padding: 2rem;
+  color: #fff;
+  overflow-y: auto;
+}
+
+.work-modal-details h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.work-modal-details p {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.work-link {
+  display: inline-block;
+  margin-top: 1rem;
+  font-size: 0.95rem;
+  text-decoration: none;
+  color: #00aaff;
+  background: transparent;
+  border: 1px solid #00aaff;
+  padding: 0.4rem 0.75rem;
+  border-radius: 4px;
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.work-link:hover {
+  background: #00aaff;
+  color: #000;
+}
+
+.work-link.no-link {
+  pointer-events: none;
+  opacity: 0.4;
+  cursor: default;
+  border-style: dashed;
+  color: #aaa;
+  background: none;
+}
+
+.link-icon {
+  height: 16px;
+  width: 16px;
+  object-fit: contain;
+  display: inline-block;
+  filter: invert(1); /* white in dark mode */
+  transition: filter 0.3s ease;
+  margin-right: 0.4rem;
+  vertical-align: middle;
+}
+
+/* Light mode: revert to black icon */
+body.light-mode .link-icon {
+  filter: invert(0);
+}
+
+body.light-mode .work-link {
+  color: #005599;
+  border-color: #005599;
+}
+
+body.light-mode .work-link:hover {
+  background: #005599;
+  color: #fff;
+}
+
+body.light-mode .work-link.no-link {
+  border-color: #888;
+  color: #666;
+}
+
+/* Light mode adjustments */
+body.light-mode .work-modal-content {
+  background: #fff;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+}
+
+body.light-mode .work-modal-details {
+  color: #111;
+}
+
+body.light-mode .work-modal-close {
+  border-color: #000;
+  color: #000;
+}
+
+body.light-mode .work-modal-close:hover {
+  background: #000;
+  color: #fff;
+}
+
+/* Responsive mobile layout */
+@media (max-width: 768px) {
+  .work-modal-content {
+    flex-direction: column;
+    max-width: 95vw;
+  }
+
+  .work-modal-close {
+    top: 0.5rem;
+    left: 0.5rem;
+    font-size: 0.9rem;
+    padding: 0.4rem 0.8rem;
+  }
+
+  .work-modal-details {
+    padding: 1rem;
+  }
 }
 
 /* Light mode styling for WIP text */

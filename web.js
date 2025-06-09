@@ -307,3 +307,61 @@ function showMobileDetail(index, clickedItem) {
     detail.classList.add("visible");
   }, 50);
 }
+
+function openWorkModal(imageSrc, title, description, link = null) {
+  const modal = document.getElementById("workModal");
+  const modalImage = document.getElementById("modalImage");
+  const modalTitle = document.getElementById("modalTitle");
+  const modalDescription = document.getElementById("modalDescription");
+  const modalLink = document.getElementById("modalLink");
+  const linkText = document.getElementById("linkText");
+
+  modalImage.src = imageSrc;
+  modalTitle.textContent = title;
+  modalDescription.textContent = description;
+
+  if (link) {
+    modalLink.href = link;
+    modalLink.classList.remove("no-link");
+    modalLink.setAttribute("aria-disabled", "false");
+    modalLink.setAttribute("tabindex", "0");
+    linkText.textContent = "View Project";
+  } else {
+    modalLink.href = "javascript:void(0)";
+    modalLink.classList.add("no-link");
+    modalLink.setAttribute("aria-disabled", "true");
+    modalLink.setAttribute("tabindex", "-1");
+    linkText.textContent = "No Link Available";
+  }
+
+  modal.classList.remove("hidden");
+  document.body.style.overflow = "hidden";
+}
+
+
+function closeWorkModal() {
+  const modal = document.getElementById("workModal");
+  const content = document.querySelector(".work-modal-content");
+
+  modal.classList.add("fade-out");
+
+  // Delay full close until animation ends
+  setTimeout(() => {
+    modal.classList.add("hidden");
+    modal.classList.remove("fade-out");
+    document.body.style.overflow = "auto";
+  }, 400); // Match duration of fadeOutDown
+}
+
+// ESC key closes the modal
+document.addEventListener("keydown", function (e) {
+  if (e.key === "Escape") closeWorkModal();
+});
+
+// Clicking outside modal content closes the modal
+function handleModalClick(e) {
+  const content = document.querySelector(".work-modal-content");
+  if (!content.contains(e.target)) {
+    closeWorkModal();
+  }
+}
