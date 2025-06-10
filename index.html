@@ -77,18 +77,22 @@
     </section>
   </main>
 
-  <div class="audio-widget">
-    <div id="audio-visual-toggle" title="Toggle audio">
-      <div class="audio-wave">
-        <span></span><span></span><span></span><span></span>
-      </div>
-      <div class="audio-meta">
-      <span id="song-name">Loading...</span>
-      <input type="range" id="audio-progress" min="0" value="0" step="0.1" />
-      </div>
+<div class="audio-widget audio-muted">
+  <div id="audio-visual-toggle" title="Click to mute/unmute">
+    <div class="audio-wave" id="mute-toggle">
+      <span></span><span></span><span></span><span></span>
     </div>
-    <audio id="bg-audio" preload="auto" loop></audio>
+    <div class="audio-meta">
+      <div id="song-name">
+        <div class="scrolling-text" id="scrolling-text">Loading...</div>
+      </div>
+      <input type="range" id="audio-progress" min="0" value="0" step="0.1" />
+    </div>
   </div>
+  <audio id="bg-audio" preload="auto"></audio>
+</div>
+
+<div id="audio-hint" class="audio-hint">Click the wave to unmute</div>
 
   <footer>
     <div class="construction-banner">

@@ -368,46 +368,129 @@ function handleModalClick(e) {
 
 document.addEventListener("DOMContentLoaded", () => {
   const audio = document.getElementById("bg-audio");
-  const visualToggle = document.getElementById("audio-visual-toggle");
-  const songName = document.getElementById("song-name");
+  const muteToggle = document.getElementById("mute-toggle");
   const widget = document.querySelector(".audio-widget");
-  const progress = document.getElementById("audio-progress");
+  const progressBar = document.getElementById("audio-progress");
+  const hint = document.getElementById("audio-hint");
+  const text = document.getElementById("scrolling-text");
 
   const songs = [
     { file: "songs/song1.mp3", name: "Pink Blue - Tsumyoki x Bharg" },
-    { file: "songs/song2.mp3", name: "Every Tear is a Waterfall - Coldplay" },
+    { file: "songs/song2.mp3", name: "Forget about Everything - Marcus Warner" },
     { file: "songs/song3.mp3", name: "Little Bit More - Suriel Hess" }
   ];
 
-  // Pick random song each time
-  const current = songs[Math.floor(Math.random() * songs.length)];
-  audio.src = current.file;
-  songName.textContent = current.name;
+  let currentIndex = Math.floor(Math.random() * songs.length);
 
-  // Set ambient volume
-  audio.volume = 0.1;
+  function loadAndPlay(index) {
+    const song = songs[index];
+    audio.src = song.file;
+    audio.load();
+    audio.volume = 0.1;
+    audio.play().then(() => {
+      console.log("🔇 Playing muted...");
+    }).catch((err) => {
+      console.warn("Autoplay blocked:", err);
+    });
+    text.textContent = song.name;
 
-  // Try to autoplay
-  audio.play().catch(() => {
-    audio.muted = true;
-    widget.classList.add("audio-muted");
-    audio.play();
+    // Enable bouncing animation if it's too wide
+    requestAnimationFrame(() => {
+    const container = document.getElementById("song-name");
+    const overflow = text.scrollWidth - container.clientWidth;
+    if (overflow > 0) {
+      text.classList.add("bounce-scroll");
+      text.style.setProperty('--scroll-amount', `${overflow}px`);
+    } else {
+      text.classList.remove("bounce-scroll");
+      text.style.removeProperty('--scroll-amount');
+    }
+  });
+  
+  }
+
+  // Apply default mute once (to pass autoplay rules)
+  audio.muted = true;
+
+  loadAndPlay(currentIndex);
+
+  // Next song on end
+  audio.addEventListener("ended", () => {
+    currentIndex = (currentIndex + 1) % songs.length;
+    loadAndPlay(currentIndex);
   });
 
-  // Toggle mute/unmute
-  visualToggle.addEventListener("click", () => {
+  // Progress fill
+  audio.addEventListener("timeupdate", () => {
+    const progress = (audio.currentTime / audio.duration) * 100;
+    const isLight = document.body.classList.contains("light-mode");
+    const fillColor = isLight ? "#000" : "#fff";
+    const emptyColor = isLight ? "#ccc" : "#777";
+    progressBar.style.background = `linear-gradient(to right, ${fillColor} ${progress}%, ${emptyColor} ${progress}%)`;
+  });
+
+  // 🔓 Only first click anywhere unblocks audio (but not unmute toggle)
+  window.addEventListener("click", () => {
+    if (audio.muted) {
+      audio.muted = false;
+      widget.classList.remove("audio-muted");
+      if (hint) {
+        hint.style.opacity = "0";
+        setTimeout(() => hint.remove(), 600);
+      }
+    }
+  }, { once: true });
+
+  // 🔊 Only the wave toggles mute/unmute
+  muteToggle.addEventListener("click", (e) => {
+    e.stopPropagation(); // prevent it from being treated as the first unmute gesture
     audio.muted = !audio.muted;
     widget.classList.toggle("audio-muted", audio.muted);
   });
 
-  // Seek on user input
-  progress.addEventListener("input", () => {
-  audio.currentTime = progress.value;
-  });
+  // Show hint only once
+  if (localStorage.getItem("audioHintAcknowledged")) {
+    if (hint) hint.remove();
+  }
 
-  // Update progress bar while audio plays
-  audio.addEventListener("timeupdate", () => {
-  progress.max = audio.duration;
-  progress.value = audio.currentTime;
-  });
+  // Unmute on first click (anywhere), and remove hint
+  window.addEventListener("click", () => {
+  if (audio.muted) {
+    audio.muted = false;
+    widget.classList.remove("audio-muted");
+
+    if (hint) {
+      hint.classList.add("fade-out");
+      setTimeout(() => hint.remove(), 800); // Optional: add easing
+    }
+
+    localStorage.setItem("audioHintAcknowledged", "true");
+  }
+  }, { once: true });
+
 });
+
+
+// document.addEventListener("DOMContentLoaded", () => {
+//   const audio = document.getElementById("bg-audio");
+//   audio.src = "songs/song1.mp3";
+//   audio.volume = 1.0;  // Max volume just for test
+//   audio.muted = false;
+
+//   audio.play().then(() => {
+//     console.log("✅ Audio is playing!");
+//   }).catch(err => {
+//     console.warn("⚠️ Autoplay blocked. Trying muted fallback.");
+
+//     audio.muted = true;
+//     audio.play().then(() => {
+//       console.log("🔇 Playing muted. Click anywhere to unmute.");
+
+//       // Add unmute on click
+//       window.addEventListener("click", () => {
+//         audio.muted = false;
+//         console.log("🔊 Unmuted by user gesture.");
+//       }, { once: true });
+//     });
+//   });
+// });
