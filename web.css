@@ -1426,6 +1426,177 @@ body.light-mode .tags span {
   vertical-align: middle;
 }
 
+/* EXPERIENCE SECTION */
+#experience {
+  padding: 4rem 2rem;
+}
+
+.experience-heading {
+  text-align: center;
+  font-size: 3rem;
+  margin-bottom: 1rem;
+  margin-top: -2rem;
+  font-weight: 700;
+}
+
+.experience-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 2rem;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+.experience-card {
+  border: 2px solid #fff;
+  padding: 1.5rem;
+  border-radius: 12px;
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(6px);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.experience-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 8px 16px rgba(255, 255, 255, 0.1);
+}
+
+.experience-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  margin-bottom: 0.5rem;
+}
+
+.experience-card h2 {
+  font-size: 1.25rem;
+  margin: 0;
+}
+
+.duration {
+  font-size: 0.85rem;
+  opacity: 0.7;
+}
+
+.organization {
+  font-size: 1rem;
+  margin: 0.2rem 0 0.8rem;
+  font-weight: 600;
+  opacity: 0.9;
+}
+
+.summary {
+  font-size: 0.95rem;
+  line-height: 1.4;
+  margin-bottom: 0.8rem;
+}
+
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
+.tags span {
+  background: #fff;
+  color: #000;
+  padding: 0.2rem 0.6rem;
+  border-radius: 6px;
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.resume-download {
+  text-align: center;
+  margin-top: 3rem;
+}
+
+.resume-button {
+  display: inline-block;
+  padding: 0.75rem 2rem;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #fff;
+  border: 2px solid #fff;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: all 0.3s ease;
+  backdrop-filter: blur(4px);
+}
+
+.resume-button:hover {
+  background: #fff;
+  color: #000;
+}
+
+body.light-mode .resume-button {
+  color: #000;
+  border-color: #000;
+}
+
+body.light-mode .resume-button:hover {
+  background: #000;
+  color: #fff;
+}
+
+body.light-mode .experience-card {
+  border-color: #000;
+  background: rgba(0, 0, 0, 0.05);
+}
+
+body.light-mode .tags span {
+  background: #000;
+  color: #fff;
+}
+
+@media (max-width: 600px) {
+  body {
+    padding-bottom: 100px; /* Reserve space for audio player */
+  }
+
+  .audio-widget {
+    bottom: 1.5rem; /* Slightly lift the player */
+  }
+
+  .experience-grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+  }
+
+  .experience-heading {
+    font-size: 2rem;
+    margin-top: 0;
+    margin-bottom: 1.5rem;
+  }
+
+  .experience-card {
+    padding: 1rem;
+  }
+
+  .experience-card h2 {
+    font-size: 1.1rem;
+  }
+
+  .organization {
+    font-size: 0.9rem;
+  }
+
+  .summary {
+    font-size: 0.85rem;
+  }
+
+  .tags span {
+    font-size: 0.7rem;
+    padding: 0.15rem 0.5rem;
+  }
+
+  .resume-button {
+    font-size: 0.9rem;
+    padding: 0.6rem 1.5rem;
+  }
+}
+
 /* Light mode: revert to black icon */
 body.light-mode .link-icon {
   filter: invert(0);
